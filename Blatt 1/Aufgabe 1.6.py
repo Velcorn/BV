@@ -18,7 +18,7 @@ print("Deviation:", deviation)
 minxy = np.unravel_index(np.argmin(mandrill, axis=None), mandrill.shape)
 maxxy = np.unravel_index(np.argmax(mandrill, axis=None), mandrill.shape)
 print("Minimum xy:", minxy)
-print("Maximum xy", maxxy)
+print("Maximum xy:", maxxy)
 
 # 4.
 even_count = len(mandrill[mandrill % 2 == 0])
@@ -27,8 +27,5 @@ print("Even:", even_count)
 print("Odd:", odd_count)
 
 # 5.
-even_pixels = mandrill[mandrill % 2 == 0]
-even_coords = []
-for p in even_pixels:
-    even_coords.append(np.argwhere(mandrill == p))
-print("Even coordinates", even_coords)
+coordinates = np.argwhere(mandrill % 2 == 0)
+print("Even coordinates:", coordinates)
