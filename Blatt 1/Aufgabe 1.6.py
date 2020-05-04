@@ -1,0 +1,34 @@
+import numpy as np
+from skimage.io import imread
+
+# 1.
+mandrill = imread("mandrill.png")
+
+# 2.
+minimum = np.amin(mandrill)
+maximum = np.amax(mandrill)
+average = np.average(mandrill)
+deviation = np.std(mandrill)
+print("Minimum:", minimum)
+print("Maximum:", maximum)
+print("Average:", average)
+print("Deviation:", deviation)
+
+# 3.
+minxy = np.unravel_index(np.argmin(mandrill, axis=None), mandrill.shape)
+maxxy = np.unravel_index(np.argmax(mandrill, axis=None), mandrill.shape)
+print("Minimum xy:", minxy)
+print("Maximum xy", maxxy)
+
+# 4.
+even_count = len(mandrill[mandrill % 2 == 0])
+odd_count = len(mandrill[mandrill % 2 != 0])
+print("Even:", even_count)
+print("Odd:", odd_count)
+
+# 5.
+even_pixels = mandrill[mandrill % 2 == 0]
+even_coords = []
+for p in even_pixels:
+    even_coords.append(np.argwhere(mandrill == p))
+print("Even coordinates", even_coords)
