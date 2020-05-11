@@ -1,10 +1,11 @@
+import numpy as np
 from skimage.io import imread
 import matplotlib.pyplot as plt
 
 # Reads in Red and NIR band as float, calculates the NDVI from the formula and shows the image.
 Red = imread("band3.png").astype(float)
 NIR = imread("band4.png").astype(float)
-NDVI = (NIR - Red)/(NIR + Red)
+NDVI = np.divide(np.subtract(NIR, Red), np.add(NIR, Red))
 plt.imshow(NDVI, cmap="gray")
 plt.show()
 
