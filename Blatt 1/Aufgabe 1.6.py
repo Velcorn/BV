@@ -21,8 +21,8 @@ print("Minimum xy:", minxy)
 print("Maximum xy:", maxxy)
 
 # 4.
-even_count = len(mandrill[mandrill % 2 == 0])
-odd_count = len(mandrill[mandrill % 2 != 0])
+even_count = np.count_nonzero(mandrill % 2 == 0)
+odd_count = np.count_nonzero(mandrill % 2 != 0)
 print("Even:", even_count)
 print("Odd:", odd_count)
 
