@@ -11,7 +11,7 @@ mu, sigma = 0.0, 1.0
 # Creates a row with 51 elements using the Gaussian function.
 x = -5
 for i in range(51):
-    f = round((1 / math.sqrt(2 * math.pi * sigma ** 2)) ** ((-(x - mu) ** 2) / 2 * sigma ** 2), 2)
+    f = round((1 / math.sqrt(2 * math.pi * sigma ** 2)) ** ((-(x - mu) ** 2) / 2 * sigma ** 2))
     row.append(f)
     if x < 5:
         x += 10 / 51
