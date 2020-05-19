@@ -62,7 +62,7 @@ def count_errors(count, coords, visited):
                 queue.append(n)
         visited.append([pixel, count])
 
-    # If all coordinates are investigated, print the count and exit. Else recursively call the function.
+    # If all coordinates are investigated, return the count. Else recursively call the function.
     if coords:
         return count_errors(count, coords, visited)
     return "There is/are " + str(count) + " error(s) in the image!"
