@@ -29,19 +29,11 @@ visited = []
 
 # Get the neighbors of a pixel.
 def get_neighbors(coord):
-    # x, y coordinates of potential neighbors.
-    potential_neighbors = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
-
-    # Initialize reachable neighbor list.
-    reachable_neighbors = []
-
-    # Check if potential neighbors are in bounds and not already visited.
-    for pn in potential_neighbors:
-        new_coord = [coord[0] + pn[0], coord[1] + pn[1]]
-        if new_coord[0] in range(binary.shape[0]) and new_coord[1] in range(binary.shape[1]):
-            reachable_neighbors += [new_coord]
-
-    return reachable_neighbors
+    neighbors = [[0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1]]
+    for n in neighbors:
+        n[0] += coord[0]
+        n[1] += coord[1]
+    return neighbors
 
 
 # Main function to count the number of errors in an image using BFS to traverse pixels in an error.
@@ -65,7 +57,7 @@ def count_errors(count, coords, visited):
     # If all coordinates are investigated, return the count. Else recursively call the function.
     if coords:
         return count_errors(count, coords, visited)
-    return "There is/are " + str(count) + " error(s) in the image!"
+    return "There are " + str(count) + " errors in the image!"
 
 
 # c.
