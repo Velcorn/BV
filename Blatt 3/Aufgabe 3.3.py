@@ -64,10 +64,8 @@ def count_errors(count, coords, visited):
 
     # If all coordinates are investigated, print the count and exit. Else recursively call the function.
     if coords:
-        count_errors(count, coords, visited)
-    else:
-        print("There is/are " + str(count) + " error(s) in the image!")
-    return ""
+        return count_errors(count, coords, visited)
+    return "There is/are " + str(count) + " error(s) in the image!"
 
 
 # c.
