@@ -38,8 +38,7 @@ def get_neighbors(coord):
     # Check if potential neighbors are in bounds and not already visited.
     for pn in potential_neighbors:
         new_coord = [coord[0] + pn[0], coord[1] + pn[1]]
-        if new_coord[0] in range(binary.shape[0]) and new_coord[1] in range(binary.shape[1]) \
-                and [new_coord, count] not in visited:
+        if new_coord[0] in range(binary.shape[0]) and new_coord[1] in range(binary.shape[1]):
             reachable_neighbors += [new_coord]
 
     return reachable_neighbors
