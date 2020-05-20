@@ -42,13 +42,11 @@ def count_errors(count, coords, visited):
     count += 1
     queue = [coords[0]]
 
-    # While queue is not empty, get first element, add all neighbors that belong to the error,
+    # While queue is not empty, get first element and add all neighbors that belong to the error,
     # are not already in queue and are not already visited.
     while queue:
-        pixel = queue[0]
-        del(queue[0])
-        index = coords.index(pixel)
-        del(coords[index])
+        pixel = queue.pop()
+        del(coords[coords.index(pixel)])
         for n in get_neighbors(pixel):
             if n in coords and n not in queue and [n, count] not in visited:
                 queue.append(n)
