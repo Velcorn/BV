@@ -13,9 +13,9 @@ plt.imshow(imgs_avg, cmap="gray")
 
 # 2.
 # Stack images and calculate the median.
-img_stack = np.stack(imgs, axis=0)
-img_median = np.median(img_stack, axis=0)
-plt.imshow(img_median, cmap="gray")
+imgs_stack = np.stack(imgs, axis=0)
+imgs_median = np.median(imgs_stack, axis=0)
+plt.imshow(imgs_median, cmap="gray")
 # plt.show()
 
 
@@ -23,15 +23,15 @@ plt.imshow(img_median, cmap="gray")
 # Calculate differences between background and foreground
 imgs_diff = []
 for i in range(len(imgs)):
-    imgs_diff.append((imgs[i] - img_median))
+    imgs_diff.append((imgs[i] - imgs_median))
 
 
 # 4.
 # Add difference to background.
-comb_img = img_median + sum(imgs_diff)
+comb_img = imgs_median + sum(imgs_diff)
 plt.imshow(comb_img, cmap="gray")
-plt.show()
+# plt.show()
 
 
 # 5.
-imsave("comb_img.png", comb_img)
+imsave("comb_img.png", comb_img.astype(np.uint8))
