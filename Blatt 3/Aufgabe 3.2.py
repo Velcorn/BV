@@ -22,9 +22,8 @@ plt.imshow(imgs_median, cmap="gray")
 # 3.
 # Calculate differences between background and foreground.
 imgs_diff = []
-threshold = 15
 for i in range(len(imgs)):
-    imgs_diff.append(abs(imgs[i] - imgs_median) > threshold)
+    imgs_diff.append(abs(imgs[i] - imgs_median) > 15)
 
 
 # 4.
