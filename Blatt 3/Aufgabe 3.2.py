@@ -31,7 +31,7 @@ for i in range(len(imgs)):
 # Add differences to background.
 comb_img = np.copy(imgs_median)
 for i in range(len(imgs_diff)):
-    comb_img = np.where(imgs_diff[i], imgs[i] * imgs_diff[i], comb_img)
+    comb_img[imgs_diff[i]] = imgs[i][imgs_diff[i]]
 
 
 # 5.
