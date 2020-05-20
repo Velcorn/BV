@@ -13,7 +13,7 @@ error = wo_error - w_error
 # 2.
 binary = 1 * (error > 0)
 plt.imshow(binary, cmap="gray")
-# plt.show()
+plt.show()
 
 
 # 3.

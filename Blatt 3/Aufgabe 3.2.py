@@ -20,18 +20,21 @@ plt.imshow(imgs_median, cmap="gray")
 
 
 # 3.
-# Calculate differences between background and foreground
+# Calculate differences between background and foreground.
 imgs_diff = []
+threshold = 15
 for i in range(len(imgs)):
-    imgs_diff.append((imgs[i] - imgs_median))
+    imgs_diff.append(abs(imgs[i] - imgs_median) > threshold)
 
 
 # 4.
-# Add difference to background.
-comb_img = imgs_median + sum(imgs_diff)
-plt.imshow(comb_img, cmap="gray")
-# plt.show()
+# Add differences to background.
+comb_img = np.copy(imgs_median)
+for i in range(len(imgs_diff)):
+    comb_img = np.where(imgs_diff[i], imgs[i] * imgs_diff[i], comb_img)
 
 
 # 5.
+plt.imshow(comb_img, cmap="gray")
+# plt.show()
 imsave("comb_img.png", comb_img.astype(np.uint8))
