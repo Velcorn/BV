@@ -13,7 +13,7 @@ error = wo_error - w_error
 # 2.
 binary = 1 * (error > 0)
 plt.imshow(binary, cmap="gray")
-plt.show()
+# plt.show()
 
 
 # 3.
@@ -38,7 +38,7 @@ def get_neighbors(coord):
 
 # Main function to count the number of errors in an image using BFS to traverse pixels in an error.
 def count_errors(count, coords, visited):
-    # Increase count on each recursive call and initialize queue (again).
+    # Increase count on each (recursive) call and initialize queue (again).
     count += 1
     queue = [coords[0]]
 
