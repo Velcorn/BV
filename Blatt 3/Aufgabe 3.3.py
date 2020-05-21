@@ -24,7 +24,7 @@ coords = list(map(list, zip(*np.nonzero(binary))))
 # b)
 # Initialize count of errors and a list of visited pixels.
 count = 0
-visited = []
+visited = set()
 
 
 # Get the neighbors of a pixel.
@@ -48,9 +48,9 @@ def count_errors(count, coords, visited):
         pixel = queue.pop()
         del(coords[coords.index(pixel)])
         for n in get_neighbors(pixel):
-            if n in coords and n not in queue and [n, count] not in visited:
+            if n in coords and n not in queue and (n[0], n[1]) not in visited:
                 queue.append(n)
-        visited.append([pixel, count])
+        visited.add((pixel[0], pixel[1]))
 
     # If all coordinates are investigated, return the count. Else recursively call the function.
     if coords:
