@@ -7,7 +7,7 @@ tv = imread("tv.png")
 
 # 1.
 def scale(mode, img, factor):
-    if mode == "nn":
+    if mode == 1:
         # Calculate new image shape and create new image with it.
         size = (int(img.shape[0] * factor), int(img.shape[1] * factor))
         scaled_img = np.zeros(size)
@@ -19,12 +19,12 @@ def scale(mode, img, factor):
 
         return scaled_img
 
-    elif mode == "bl":
+    elif mode == 2:
         return ""
     else:
-        return "Select either nearest neighbor (nn) or bilinear (bl)!"
+        return "Select either nearest neighbor (1) or bilinear (2)!"
 
 
 # 2.
-plt.imshow(scale("nn", tv, 2), cmap="gray")
+plt.imshow(scale(1, tv, 2), cmap="gray")
 plt.show()
