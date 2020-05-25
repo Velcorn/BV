@@ -32,4 +32,4 @@ original_size = scale(half_size, 2)
 plt.imshow(original_size, cmap="gray")
 plt.show()
 # Nein, da beim Verkleinern Informationen verloren gehen,
-# die beim Vergrößern nicht zurückgewonnen werden.
+# die beim Vergrößern nicht zurückgewonnen werden (können).
