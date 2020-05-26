@@ -1,8 +1,6 @@
 import numpy as np
 from skimage.io import imread
 import matplotlib.pyplot as plt
-from math import ceil, floor
-from scipy.ndimage import zoom
 
 tv = imread("tv.png")
 
@@ -10,43 +8,39 @@ tv = imread("tv.png")
 # 1.
 def scale(mode, img, factor):
     if mode == 1:
-        height, width = img.shape[:2]
-        new_height, new_width = (int(height * factor), int(width * factor))[:2]
-        scaled_img = np.zeros([new_height, new_width])
+        # Get new height and new width.
+        height, width = img.shape[0], img.shape[1]
+        new_height, new_width = (np.round(height * factor)).astype(int), (np.round(width * factor)).astype(int)
 
-        for x in range(new_width):
-            for y in range(new_height):
-                scaled_img[y, x] = img[int(y / factor), int(x / factor)]
+        # Divide indices of scaled image by factor and unite them with input image.
+        x_indices = (np.arange(new_width) / factor).astype(int)
+        y_indices = (np.arange(new_height) / factor).astype(int)
 
-        return scaled_img
-
+        return img[np.ix_(y_indices, x_indices)]
     elif mode == 2:
-        height, width = img.shape[:2]
-        new_height, new_width = (int(height * factor), int(width * factor))[:2]
-        scaled_img = np.zeros([new_height, new_width])
+        height, width = img.shape[0], img.shape[1]
+        new_height, new_width = (np.round(height * factor)).astype(int), (np.round(width * factor)).astype(int)
+        scaled_img = np.zeros((new_height, new_width))
 
-        x_ratio = float((width-1) / (new_width-1)) if new_width > 0 else 0
-        y_ratio = float((height-1) / (new_height-1)) if new_height > 0 else 0
+        x_ratio = (width - 1) / (new_width - 1)
+        y_ratio = (height - 1) / (new_height - 1)
 
         for x in range(new_width):
             for y in range(new_height):
-                xl, yt = floor(x_ratio * x), floor(y_ratio * y)
-                xr, yb = ceil(x_ratio * x), ceil(y_ratio * y)
+                x1 = (np.floor(x * x_ratio)).astype(int)
+                y1 = (np.floor(y * y_ratio)).astype(int)
+                x2 = (np.ceil(x * x_ratio)).astype(int)
+                y2 = (np.ceil(y * y_ratio)).astype(int)
 
-                x_weight = (x_ratio * x) - xl
-                y_weight = (y_ratio * y) - yt
+                tl = img[y1, x1]
+                tr = img[y1, x2]
+                bl = img[y2, x1]
+                br = img[y2, x2]
 
-                tl = img[yt, xl]
-                tr = img[yt, xr]
-                bl = img[yb, xl]
-                br = img[yb, xr]
+                xw = (x_ratio * x) - x1
+                yw = (y_ratio * y) - y1
 
-                pixel = tl * (1-x_weight) * (1-y_weight) + \
-                    tr * x_weight * (1-y_weight) + \
-                    bl * y_weight * (1-x_weight) + \
-                    br * x_weight * y_weight
-
-                scaled_img[y][x] = pixel
+                scaled_img[y][x] = tl * (1 - xw) * (1 - yw) + tr * xw * (1 - yw) + bl * (1 - xw) * yw + br * xw * yw
 
         return scaled_img
     else:
@@ -55,5 +49,5 @@ def scale(mode, img, factor):
 
 # 2.
 plt.imshow(scale(2, tv, 2), cmap="gray")
-# plt.imshow(zoom(tv, 2, order=1), cmap="gray")
 plt.show()
+# Bilineare Interpolation liefert deutlich sanftere Übergänge zwischen den Graustufen.
