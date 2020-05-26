@@ -8,12 +8,13 @@ tv = imread("tv.png")
 # 1.
 def scale(img, factor):
     # Calculate new image shape and create new image with it.
-    size = (int(img.shape[0] * factor), int(img.shape[1] * factor))
-    scaled_img = np.zeros(size)
+    height, width = img.shape[:2]
+    new_height, new_width = (int(height * factor), int(width * factor))[:2]
+    scaled_img = np.zeros([new_height, new_width])
 
     # Iterate over all pixels and set their values based on the input image.
-    for x in range(size[0]):
-        for y in range(size[1]):
+    for x in range(new_height):
+        for y in range(new_width):
             scaled_img[x, y] = img[int(x / factor), int(y / factor)]
 
     return scaled_img
