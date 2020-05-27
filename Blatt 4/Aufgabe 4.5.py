@@ -9,8 +9,7 @@ tv = imread("tv.png")
 def scale(mode, img, factor):
     if mode == 1:
         # Get new height and new width.
-        height, width = img.shape[0], img.shape[1]
-        new_height, new_width = (np.round(height * factor)).astype(int), (np.round(width * factor)).astype(int)
+        new_height, new_width = img.shape[0] * factor, img.shape[1] * factor
 
         # Divide indices of scaled image by factor and unite them with input image.
         x_indices = (np.arange(new_width) / factor).astype(int)
@@ -20,29 +19,33 @@ def scale(mode, img, factor):
     elif mode == 2:
         # Get new height/width and create "blank" image with it.
         height, width = img.shape[0], img.shape[1]
-        new_height, new_width = (np.round(height * factor)).astype(int), (np.round(width * factor)).astype(int)
+        new_height, new_width = height * factor, width * factor
         scaled_img = np.zeros((new_height, new_width))
 
-        # Calculate scalin ratios.
-        x_ratio = (width - 1) / (new_width - 1)
-        y_ratio = (height - 1) / (new_height - 1)
-
-        # Get neighboring pixels, their value and x/y weight and calculate interpolation.
+        # Get neighboring pixels, their value and x/y weight, and calculate interpolation.
         for x in range(new_width):
             for y in range(new_height):
-                x1 = (np.floor(x * x_ratio)).astype(int)
-                y1 = (np.floor(y * y_ratio)).astype(int)
-                x2 = (np.ceil(x * x_ratio)).astype(int)
-                y2 = (np.ceil(y * y_ratio)).astype(int)
+                # x/y coordinate in input image.
+                x_coord = x / factor
+                y_coord = y / factor
 
+                # Neighboring pixels.
+                x1 = (np.floor(x_coord)).astype(int) if x_coord > 0 else 0
+                y1 = (np.floor(y_coord)).astype(int) if y_coord > 0 else 0
+                x2 = (np.ceil(x_coord)).astype(int) if x_coord < width-1 else width-1
+                y2 = (np.ceil(y_coord)).astype(int) if y_coord < height-1 else height-1
+
+                # Value of (top left, top right, bottom left, bottom right) pixels.
                 tl = img[y1, x1]
                 tr = img[y1, x2]
                 bl = img[y2, x1]
                 br = img[y2, x2]
 
-                xw = (x_ratio * x) - x1
-                yw = (y_ratio * y) - y1
+                # Weight of neighbors.
+                xw = x_coord - x1
+                yw = y_coord - y1
 
+                # Using interpolation formula to calculate pixel value.
                 scaled_img[y][x] = tl * (1 - xw) * (1 - yw) + tr * xw * (1 - yw) + bl * (1 - xw) * yw + br * xw * yw
 
         return scaled_img
