@@ -18,13 +18,16 @@ def scale(mode, img, factor):
 
         return img[np.ix_(y_indices, x_indices)]
     elif mode == 2:
+        # Get new height/width and create "blank" image with it.
         height, width = img.shape[0], img.shape[1]
         new_height, new_width = (np.round(height * factor)).astype(int), (np.round(width * factor)).astype(int)
         scaled_img = np.zeros((new_height, new_width))
 
+        # Calculate scalin ratios.
         x_ratio = (width - 1) / (new_width - 1)
         y_ratio = (height - 1) / (new_height - 1)
 
+        # Get neighboring pixels, their value and x/y weight and calculate interpolation.
         for x in range(new_width):
             for y in range(new_height):
                 x1 = (np.floor(x * x_ratio)).astype(int)
