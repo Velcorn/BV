@@ -71,16 +71,16 @@ def hsi2rgb(img):
 
 # RGB to CMY
 plt.imshow(rgb2cmy(mandrill))
-# plt.show()
+plt.show()
 
 # CMY to RGB
 plt.imshow(cmy2rgb(rgb2cmy(mandrill)))
-# plt.show()
+plt.show()
 
 # RGB to HSI
 plt.imshow(rgb2hsi(mandrill))
-# plt.show()
+plt.show()
 
 # HSI to RGB
-plt.imshow(hsv2rgb(rgb2hsi(mandrill)))
+plt.imshow(hsi2rgb(rgb2hsi(mandrill)))
 plt.show()
