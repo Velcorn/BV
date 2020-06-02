@@ -1,7 +1,7 @@
 import numpy as np
 from skimage.io import imread
 import matplotlib.pyplot as plt
-from math import acos, cos, pi, sqrt
+from math import acos, cos, sqrt
 
 mandrill = imread("mandrillFarbe.png")
 
@@ -31,8 +31,9 @@ def rgb_to_hsi(img):
                 h = theta
             else:
                 h = 360 - theta
+            h /= 360
             s = 1 - 3 / (r + b + g) * min(r, g, b)
-            i = 1/3 * (r + g + b)
+            i = 1 / 3 * (r + g + b)
 
             img[y, x] = h, s, i
 
@@ -45,6 +46,7 @@ def hsi_to_rgb(img):
         for y in range(img.shape[0]-1):
             px = img[y, x]
             h = px[0]
+            h *= 360
             s = px[1]
             i = px[2]
 
@@ -70,11 +72,11 @@ def hsi_to_rgb(img):
 
 # RGB to CMY
 plt.imshow(rgb_to_cmy(mandrill))
-plt.show()
+# plt.show()
 
 # CMY to RGB
 plt.imshow(cmy_to_rgb(rgb_to_cmy(mandrill)))
-plt.show()
+# plt.show()
 
 # RGB to HSI
 # plt.imshow(rgb_to_hsi(mandrill))
