@@ -76,7 +76,7 @@ plt.imshow(cmy2rgb(rgb2cmy(mandrill)))
 plt.show()
 
 # RGB to HSI
-plt.imshow(rgb2hsi(mandrill))
+plt.imshow(np.clip(rgb2hsi(mandrill), 0, 1))
 plt.show()
 
 # HSI to RGB
