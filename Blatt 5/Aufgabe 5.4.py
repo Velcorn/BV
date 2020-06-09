@@ -64,11 +64,11 @@ plt.show()
 
 # 7.
 mandrill_60 = rgb2hsv(mandrill)
-mandrill_60[:, :, 0] += 60
+mandrill_60[:, :, 0] += 1/6
 mandrill_120 = rgb2hsv(mandrill)
-mandrill_120[:, :, 0] += 120
+mandrill_120[:, :, 0] += 1/3
 mandrill_240 = rgb2hsv(mandrill)
-mandrill_240[:, :, 0] += 240
+mandrill_240[:, :, 0] += 2/3
 plt.imshow(hsv2rgb(mandrill_60))
 plt.show()
 plt.imshow(hsv2rgb(mandrill_120))

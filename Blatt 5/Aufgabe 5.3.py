@@ -1,6 +1,5 @@
 import numpy as np
 from skimage.io import imread
-from skimage.color import rgb2hsv, hsv2rgb
 import matplotlib.pyplot as plt
 from math import acos, cos, sqrt
 
