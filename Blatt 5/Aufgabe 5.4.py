@@ -75,4 +75,4 @@ plt.imshow(hsv2rgb(mandrill_120))
 plt.show()
 plt.imshow(hsv2rgb(mandrill_240))
 plt.show()
-# Drehen der Farbtöne verändert die Farbtöne des Bildes?!
+# Drehen der Farbtöne verändert die Farbtöne des Bildes im HSI-Farbkreis?!
