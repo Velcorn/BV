@@ -8,7 +8,7 @@ mandrill = imread("mandrill.png")
 # 1.
 def var1(img):
     start = time.time()
-    width, height = img.shape[1], img.shape[0]
+    width, height = img.shape[:2]
 
     mu = 0
     for x in range(width):
@@ -37,7 +37,7 @@ print("Var1 result:", var1(mandrill)[0])
 def var2(img):
     start = time.time()
 
-    width, height = img.shape[1], img.shape[0]
+    width, height = img.shape[:2]
 
     mu = 0
     var = 0
@@ -71,4 +71,4 @@ print("Var2 time:", var2_time)
 
 # Die Ergebnisse variieren leicht aufgrund von Rundungen bei unterschiedlichen Rechnungen -
 # bei Variante 1 wird in jedem Schleifendurchlauf subtrahiert und am Ende dividiert, bei Variante 2 ist es andersrum.
-# Variante 1 ist schneller, who knows why.
+# Variante 2 sollte schneller sein, da nur 1 Durchlauf benötigt wird.
