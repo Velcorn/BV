@@ -31,12 +31,12 @@ def equalize_hist(img):
     eq_hist = np.asarray(t)
 
     # Apply equalized histogram to image.
-    new_img = np.reshape(eq_hist[img.flatten()], img.shape)
+    he_img = np.reshape(eq_hist[img.flatten()], img.shape)
 
-    return eq_hist, new_img
+    return eq_hist, he_img
 
 
-plt.figure(3)
+'''plt.figure(3)
 plt.hist(equalize_hist(bild1)[0], bins=256, range=(0, 256), density=True)
 plt.show()
 plt.figure(4)
@@ -48,4 +48,14 @@ plt.hist(equalize_hist(bild2)[0], bins=256, range=(0, 256), density=True)
 plt.show()
 plt.figure(6)
 plt.imshow(equalize_hist(bild2)[1], cmap="gray", vmin=0, vmax=255)
+plt.show()'''
+
+
+# 3.
+plt.figure(7)
+plt.plot(range(len(equalize_hist(bild1)[0])), equalize_hist(bild1)[0])
+plt.show()
+
+plt.figure(8)
+plt.plot(range(len(equalize_hist(bild2)[0])), equalize_hist(bild2)[0])
 plt.show()
