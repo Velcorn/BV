@@ -9,12 +9,12 @@ bild2 = imread("bild2.png")
 hist1 = np.histogram(bild1.flatten(), 256, [0, 256], density=True)
 hist2 = np.histogram(bild2.flatten(), 256, [0, 256], density=True)
 
-'''plt.figure("Histogramm 1")
+plt.figure("Histogramm 1")
 plt.hist(bild1.flatten(), 256, [0, 256], density=True)
 plt.show()
 plt.figure("Histogramm 2")
 plt.hist(bild2.flatten(), 256, [0, 256], density=True)
-plt.show()'''
+plt.show()
 
 
 # 2.
@@ -36,7 +36,7 @@ def equalize_hist(img):
     return eq_hist, he_img
 
 
-'''plt.figure("Equalized Histogramm 1")
+plt.figure("Equalized Histogramm 1")
 plt.hist(equalize_hist(bild1)[0], bins=256, range=(0, 256), density=True)
 plt.show()
 plt.figure("Histogram Equalization Bild 1")
@@ -48,7 +48,7 @@ plt.hist(equalize_hist(bild2)[0], bins=256, range=(0, 256), density=True)
 plt.show()
 plt.figure("Histogram Equalization Bild 2")
 plt.imshow(equalize_hist(bild2)[1], cmap="gray", vmin=0, vmax=255)
-plt.show()'''
+plt.show()
 
 
 # 3.
