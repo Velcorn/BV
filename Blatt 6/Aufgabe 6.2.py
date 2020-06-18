@@ -62,7 +62,5 @@ end = time.time()
 var2_time = end - start
 print("Var2 time:", var2_time)
 
-'''
-Die Ergebnisse variieren leicht aufgrund von Rundungen bei unterschiedlichen Rechnungen.
-Variante 2 sollte schneller sein, da nur 1 Durchlauf benötigt wird.
-'''
+# Die Ergebnisse variieren leicht aufgrund von Rundungen bei unterschiedlichen Rechnungen.
+# Variante 2 sollte schneller sein, da nur 1 Durchlauf benötigt wird.

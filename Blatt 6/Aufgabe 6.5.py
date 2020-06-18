@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 
 
 def equalize_hist(img):
-    hist, bins = np.histogram(img.flatten(), 256, [0, 256], density=True)
-    t = []
-    val = 0
-    for x in range(len(hist)):
-        val += 255 * hist[x]
-        t.append(int(val))
-    eq_hist = np.asarray(t)
+    hist = np.histogram(img.flatten(), 256, [0, 256], density=True)[0]
+    tf = []
+    tv = 0
+    for v in hist:
+        tv += 255 * v
+        tf.append(int(tv))
+    eq_hist = np.asarray(tf)
     he_img = np.reshape(eq_hist[img.flatten()], img.shape)
     return eq_hist, he_img
 
