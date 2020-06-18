@@ -50,6 +50,11 @@ plt.figure("Histogram Equalization Bild 2")
 plt.imshow(equalize_hist(bild2)[1], cmap="gray", vmin=0, vmax=255)
 plt.show()
 
+# Im Histogramm von Bild 1 wurden die dunklen Werte auf hellere Werte gemappt,
+# helle Werte sind relativ gleich geblieben, sodass das Bild nicht overexposed wird.
+# Im Histogramm von Bild 2 wurden die Werte auf die beiden Enden (hell/dunkel) gemappt,
+# sodass sich die Skyline besser vom Hintergrund abhebt.
+
 
 # 3.
 def i1(img):
@@ -75,5 +80,9 @@ plt.figure("Intensitätstransformation 2")
 plt.plot(range(len(equalize_hist(bild2)[0])), list(map(i2, range(len(equalize_hist(bild2)[0])))))
 plt.show()
 
-# Die Ergebnisse der Histogrammausgleiche sehen allgemein besser/genauer aus.
-# Die Transformationsfunktionen sind spezifischer/genauer als die Intensitätstransformationen.
+# Bei Bild 1 werden beide Bilder aufgehellt, jedoch wird es bei dem Histogrammausgleich nicht overexposed..
+# Die Transformationsfunktion mappt die bereits hellen Werte nicht auf noch hellere.
+
+# Bei Bild 2 wird in beiden Bildern der Wertebereich gestreckt,
+# im Histogrammausgleich werden mehr Details sichtbar, es entsteht jedoch auch mehr Noise.
+# Der Übergang von dunklen zu hellen Werten ist in der Intensitätstransformation weicher.
