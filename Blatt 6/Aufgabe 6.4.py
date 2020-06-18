@@ -80,9 +80,9 @@ plt.figure("Intensitätstransformation 2")
 plt.plot(range(len(equalize_hist(bild2)[0])), list(map(i2, range(len(equalize_hist(bild2)[0])))))
 plt.show()
 
-# Bei Bild 1 werden beide Bilder aufgehellt, jedoch wird es bei dem Histogrammausgleich nicht overexposed..
+# Bei Bild 1 werden beide Bilder aufgehellt, jedoch wird es beim Histogrammausgleich nicht overexposed..
 # Die Transformationsfunktion mappt die bereits hellen Werte nicht auf noch hellere.
 
 # Bei Bild 2 wird in beiden Bildern der Wertebereich gestreckt,
-# im Histogrammausgleich werden mehr Details sichtbar, es entsteht jedoch auch mehr Noise.
+# beim Histogrammausgleich werden mehr Details sichtbar, es entsteht jedoch auch mehr Noise.
 # Der Übergang von dunklen zu hellen Werten ist in der Intensitätstransformation weicher.
