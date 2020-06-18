@@ -52,10 +52,28 @@ plt.show()
 
 
 # 3.
+def i1(img):
+    return 255 ** 0.8 * img ** 0.2
+
+
+def i2(img):
+    return (255 * np.e ** ((img / 255) * 16 - 10)) / (1 + np.e ** ((img / 255) * 16 - 10))
+
+
 plt.figure("Transformationsfunktion 1")
 plt.plot(range(len(equalize_hist(bild1)[0])), equalize_hist(bild1)[0])
+plt.show()
+plt.figure("Intensitätstransformation 1")
+plt.plot(range(len(equalize_hist(bild1)[0])), list(map(i1, range(len(equalize_hist(bild1)[0])))))
 plt.show()
 
 plt.figure("Transformationsfunktion 2")
 plt.plot(range(len(equalize_hist(bild2)[0])), equalize_hist(bild2)[0])
 plt.show()
+
+plt.figure("Intensitätstransformation 2")
+plt.plot(range(len(equalize_hist(bild2)[0])), list(map(i2, range(len(equalize_hist(bild2)[0])))))
+plt.show()
+
+# Die Ergebnisse der Histogrammausgleiche sehen allgemein besser/genauer aus.
+# Die Transformationsfunktionen sind spezifischer/genauer als die Intensitätstransformationen.

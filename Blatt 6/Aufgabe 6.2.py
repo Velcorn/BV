@@ -1,4 +1,3 @@
-import numpy as np
 from skimage.io import imread
 import time
 
@@ -36,7 +35,6 @@ print("Var1 result:", var1(mandrill)[0])
 # 2.
 def var2(img):
     start = time.time()
-
     width, height = img.shape[:2]
 
     mu = 0
@@ -70,5 +68,5 @@ print("Var1 time:", var1_time)
 print("Var2 time:", var2_time)
 
 # Die Ergebnisse variieren leicht aufgrund von Rundungen bei unterschiedlichen Rechnungen -
-# bei Variante 1 wird in jedem Schleifendurchlauf subtrahiert und am Ende dividiert, bei Variante 2 ist es andersrum.
+# Bei Variante 1 wird in jedem Schleifendurchlauf subtrahiert und am Ende dividiert, bei Variante 2 ist es andersrum.
 # Variante 2 sollte schneller sein, da nur 1 Durchlauf benötigt wird.
