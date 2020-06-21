@@ -28,7 +28,7 @@ plt.show()
 
 # 2.
 def eq_hist_tiles(img, tile_size):
-    width, height = img.shape[:2]
+    height, width = img.shape[:2]
 
     # Loop through every tile of the image,
     # apply the histogram equalization on each tile

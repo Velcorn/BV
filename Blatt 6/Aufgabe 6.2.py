@@ -6,7 +6,7 @@ mandrill = imread("mandrill.png")
 
 # 1.
 def var1(img):
-    width, height = img.shape[:2]
+    height, width = img.shape[:2]
 
     mu = 0
     for x in range(width):
@@ -30,7 +30,7 @@ print("Var1 result:", var1(mandrill))
 
 # 2.
 def var2(img):
-    width, height = img.shape[:2]
+    height, width = img.shape[:2]
 
     mu = 0
     var = 0
