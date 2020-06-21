@@ -1,6 +1,6 @@
 import numpy as np
-from skimage.io import ImageCollection
 import matplotlib.pyplot as plt
+from skimage.io import ImageCollection
 
 imgs = ImageCollection("bild*.png")
 

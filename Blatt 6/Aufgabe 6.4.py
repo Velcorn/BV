@@ -1,6 +1,6 @@
 import numpy as np
-from skimage.io import imread
 import matplotlib.pyplot as plt
+from skimage.io import imread
 
 # 1.
 bild1 = imread("bild1.png")

@@ -1,6 +1,6 @@
 import numpy as np
-from skimage.io import ImageCollection, imsave
 import matplotlib.pyplot as plt
+from skimage.io import ImageCollection, imsave
 
 # 1.
 # Load images and calculate an average.

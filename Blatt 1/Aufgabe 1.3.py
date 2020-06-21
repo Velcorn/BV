@@ -1,5 +1,5 @@
-from skimage.io import imread, imsave
 import matplotlib.pyplot as plt
+from skimage.io import imread, imsave
 
 # 1.
 mandrill = imread("mandrill.png")

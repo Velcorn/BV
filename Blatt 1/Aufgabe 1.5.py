@@ -1,6 +1,6 @@
+import time
 import numpy as np
 from skimage.io import imread
-import time
 
 mandrill = "mandrill.png"
 

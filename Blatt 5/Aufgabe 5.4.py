@@ -1,7 +1,7 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from skimage.io import imread
 from skimage.color import rgb2hsv, hsv2rgb
-import matplotlib.pyplot as plt
 
 # 1.
 mandrill = imread("mandrillFarbe.png")

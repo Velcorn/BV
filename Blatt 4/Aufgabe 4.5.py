@@ -1,6 +1,6 @@
 import numpy as np
-from skimage.io import imread
 import matplotlib.pyplot as plt
+from skimage.io import imread
 
 tv = imread("tv.png")
 
@@ -16,7 +16,7 @@ def scale(mode, img, factor):
         y_indices = (np.arange(new_height) / factor).astype(int)
 
         return img[np.ix_(y_indices, x_indices)]
-    elif mode == 2:
+    if mode == 2:
         # Get new height/width and create "blank" image with it.
         height, width = img.shape[0], img.shape[1]
         new_height, new_width = height * factor, width * factor

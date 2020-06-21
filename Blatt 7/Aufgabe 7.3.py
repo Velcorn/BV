@@ -1,7 +1,8 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 from scipy.ndimage import convolve
 from skimage.io import imread
+from skimage.filters import gaussian
 from skimage.util import random_noise
 
 
@@ -22,53 +23,53 @@ print("Mean abs diff original/gauss:", diff_gauss)
 
 
 # 3.
-min_diff_gauss_box = np.inf
-best_gauss_box = 0
+min_diff = np.inf
+best = 0
 n_vals = [3, 5, 7, 9, 11]
 for n in n_vals:
-    kernel = (1 / (n * n)) * np.ones((n, n))
-    einstein_gauss_box = convolve(einstein_gauss, kernel)
-    diff = mean_abs_diff(einstein_gauss, einstein_gauss_box)
-    if diff < min_diff_gauss_box:
-        min_diff_gauss_box = diff
-        best_gauss_box = einstein_gauss_box
+    k = (1 / (n * n)) * np.ones((n, n))
+    einstein_gauss_box = convolve(einstein_gauss, k)
+    diff = mean_abs_diff(einstein, einstein_gauss_box)
+    if diff < min_diff:
+        min_diff = diff
+        best = einstein_gauss_box
 
-print("Min mean abs diff gauss/box:", min_diff_gauss_box)
-plt.imshow(best_gauss_box, cmap="gray")
+print("Min mean abs diff original/gauss/box:", min_diff)
+plt.imshow(best, cmap="gray")
 plt.show()
 
 # 4.
-min_diff_gauss_gauss = np.inf
-best_gauss_gauss = 0
+min_diff = np.inf
+best = 0
 var = 0.1
 while var < 2:
-    einstein_gauss_gauss = random_noise(einstein, mode="gaussian", var=0.01)
+    einstein_gauss_gauss = gaussian(einstein_gauss, sigma=var)
     diff = mean_abs_diff(einstein, einstein_gauss_gauss)
-    if diff < min_diff_gauss_gauss:
-        min_diff_gauss_gauss = diff
-        best_gauss_gauss = einstein_gauss_gauss
+    if diff < min_diff:
+        min_diff = diff
+        best = einstein_gauss_gauss
     var += 0.1
 
-print("Min mean abs diff gauss/gauss:", min_diff_gauss_gauss)
-plt.imshow(best_gauss_gauss, cmap="gray")
+print("Min mean abs diff original/gauss/gauss:", min_diff)
+plt.imshow(best, cmap="gray")
 plt.show()
 
 
 # 5.
 einstein_snp = random_noise(einstein, mode="s&p", amount=0.1)
-min_diff_snp_gauss = np.inf
-best_snp_gauss = 0
+min_diff = np.inf
+best = 0
 var = 0.1
 while var < 2:
-    einstein_snp_gauss = random_noise(einstein, mode="gaussian", var=0.01)
+    einstein_snp_gauss = gaussian(einstein_snp, sigma=var)
     diff = mean_abs_diff(einstein, einstein_snp_gauss)
-    if diff < min_diff_snp_gauss:
-        min_diff_snp_gauss = diff
-        best_snp_gauss = einstein_snp_gauss
+    if diff < min_diff:
+        min_diff = diff
+        best = einstein_snp_gauss
     var += 0.1
 
-print("Min mean abs diff snp/gauss:", min_diff_snp_gauss)
-plt.imshow(best_snp_gauss, cmap="gray")
+print("Min mean abs diff original/snp/gauss:", min_diff)
+plt.imshow(best, cmap="gray")
 plt.show()
 
 
@@ -85,8 +86,8 @@ def median_filter(img):
     return img
 
 
-einstein_snp_median_filter = median_filter(einstein_snp)
-diff_snp_median_filter = mean_abs_diff(einstein, einstein_snp_median_filter)
-print("Mean abs diff snp/median_filter:", diff_snp_median_filter)
-plt.imshow(einstein_snp_median_filter, cmap="gray")
+einstein_snp_median = median_filter(einstein_snp)
+diff_snp_median = mean_abs_diff(einstein, einstein_snp_median)
+print("Mean abs diff original/snp/median:", diff_snp_median)
+plt.imshow(einstein_snp_median, cmap="gray")
 plt.show()

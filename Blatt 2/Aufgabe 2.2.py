@@ -1,5 +1,5 @@
-import numpy as np
 import math
+import numpy as np
 import matplotlib.pyplot as plt
 
 # TODO: Ich weiß zwar nicht, ob die Funktion jetzt wenigstens halbwegs das tut, was die Aufgabe haben will, aber hier.

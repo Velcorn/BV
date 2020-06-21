@@ -1,6 +1,6 @@
 import numpy as np
-from skimage.io import imread
 import matplotlib.pyplot as plt
+from skimage.io import imread
 
 # TODO: Ist nicht gerade schön (Zeitkomplexität), aber funktioniert ^^
 
