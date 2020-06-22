@@ -30,7 +30,7 @@ replicate_pad_row = [row[0]] * 3 + row + [row[-1]] * 3
 conv = np.convolve(replicate_pad_row, k)
 plt.plot(range(len(conv)), conv, label="replicate_pad")
 
-# Das replicate-padding
+# Das replicate-padding sorgt dafür, dass sich die Randbereiche dem letzten Listenelement annähern.
 
 
 # 5.
@@ -38,7 +38,8 @@ mirror_pad_row = row[:3][::-1] + row + row[-3:][::-1]
 conv = np.convolve(mirror_pad_row, k)
 plt.plot(range(len(conv)), conv, label="mirror_pad")
 
-# Das mirror-padding
+# Das mirror-padding sorgt dafür, dass sich die Randbereiche den letzten 3 Listenelementen
+# einschließlich des Randelements annähern.
 
 
 # 6.
@@ -48,4 +49,5 @@ plt.plot(range(len(conv)), conv, label="reflection_pad")
 plt.legend()
 plt.show()
 
-# Das reflection-padding
+# Das reflection-padding sorgt dafür, dass sich die Randbereiche den letzten 3 Listenelementen
+# ausschließlich des Randelements annähern.

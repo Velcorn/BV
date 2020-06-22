@@ -78,7 +78,7 @@ plt.show()
 # 6.
 def median_filter(img):
     height, width = img.shape[:2]
-    neighbors = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
+    neighbors = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 0], [0, 1], [1, -1], [1, 0], [1, 1]]
 
     for x in range(width):
         for y in range(height):
