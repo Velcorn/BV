@@ -54,6 +54,8 @@ print("Min mean abs diff original/gauss/gauss:", min_diff)
 plt.imshow(best, cmap="gray")
 plt.show()
 
+# Nein, man erkennt kaum bis keinen Unterschied zwischen Gauss- und Box-Filter.
+
 
 # 5.
 einstein_snp = random_noise(einstein, mode="s&p", amount=0.1)

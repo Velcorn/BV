@@ -42,7 +42,7 @@ gletscher_slice[gletscher_slice < 130] = 0
 gletscher_slice[np.logical_and(gletscher_slice > 130, gletscher_slice < 180)] = 155
 gletscher_slice[gletscher_slice > 180] = 255
 plt.imshow(gletscher_slice, cmap="gray")
-# plt.show()
+plt.show()
 
 # Moränen, Berge und Himmel lassen sich durch intensity-level slicing relativ gut trennen.
 # Einzelne Elemente im See werden jedoch falsch gefärbt,
@@ -56,7 +56,7 @@ gletscher_gauss_slice[gletscher_gauss_slice < 0.4] = 0
 gletscher_gauss_slice[np.logical_and(gletscher_gauss_slice > 0.4, gletscher_gauss_slice < 0.8)] = 0.5
 gletscher_gauss_slice[gletscher_gauss_slice > 0.8] = 1
 plt.imshow(gletscher_gauss_slice, cmap="gray")
-# plt.show()
+plt.show()
 
 # Grenze zwischen Moränen und Bergen und Himmel wird (nun) wie der See markiert.
 
@@ -67,4 +67,4 @@ plt.imshow(boundaries)
 plt.show()
 
 # Übergang zwischen Moränen und Bergen und Himmel verschwimmt beim Weichzeichnen.
-# Problem ist also der Übergang zwischen helle(re)n Grautönen und Weiß.
+# Problem ist also hauptsächlich der Übergang zwischen helle(re)n Grautönen und Weiß.
