@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
-from skimage.filters import gaussian, sobel, sobel_v
+from skimage.filters import gaussian, sobel, sobel_h, sobel_v
 
 
 # 1.
@@ -74,8 +74,8 @@ plt.close()
 
 
 # 4.
-degrees_origin = np.degrees(sobel(mandrill))
-degrees_gauss = np.degrees(sobel(mandrill_gauss))
+degrees_origin = np.degrees(np.arctan(np.divide(sobel_v(mandrill), sobel_h(mandrill) + 0.0001)))
+degrees_gauss = np.degrees(np.arctan(np.divide(sobel_v(mandrill_gauss), sobel_h(mandrill_gauss) + 0.0001)))
 
 plt.figure("Histogramm Origin")
 plt.hist(degrees_origin.flatten(), 9, [0, 9])
@@ -85,10 +85,8 @@ plt.figure("Histogramm Gauss")
 plt.hist(degrees_gauss.flatten(), 9, [0, 9])
 plt.show()
 
-# Bei dem Histogramm des Originalbildes ist die Verteilung zunächst ansteigend,
-# fällt dann aber zunehmend weniger stark ab
-# Bei dem Histogramm des Gaussbildes ist die Verteilung hauptsächlich im ersten Bucket und steigt dann stark ab,
-# sodass im sechsten Bucket bereits keine Werte mehr sind.
+# Bei dem Histogramm des Originalbildes liegen deutlich mehr Werte im ersten Bucket,
+# bei dem Histogramm des Gaussbildes ist die Verteilung ausgeglichener.
 
 
 plt.figure("Histogramm Origin Weight")
@@ -99,6 +97,4 @@ plt.figure("Histogramm Gauss Weight")
 plt.hist(degrees_gauss.flatten(), 9, [0, 9], weights=degrees_gauss.flatten())
 plt.show()
 
-# Mit gesetztem Weightparameter ist die Verteilung im Histogramm des Originalbildes ziemlich gleichmäßig,
-# ausnähmlich des ersten Buckets.
-# Bei der Verteilung im Histogramm des Gaussbildes ändert sich wenig an der Verteilung.
+# Mit gesetztem Weightparameter ist die Verteilung bei beiden Histogrammen aufsteigend mit den Buckets.
