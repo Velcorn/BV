@@ -8,13 +8,13 @@ from skimage.filters import gaussian, sobel, sobel_h, sobel_v
 mandrill = imread("mandrill.png")
 mandrill_sobel = sobel(mandrill)
 plt.imshow(mandrill_sobel)
-# plt.show()
+plt.show()
 
 threshold = 0.15
 mandrill_sobel[mandrill_sobel > threshold] = 1
 mandrill_sobel[mandrill_sobel < threshold] = 0
 plt.imshow(mandrill_sobel)
-# plt.show()
+plt.show()
 
 # Die wichtigsten Kanten wurden gefunden,
 # es werden allerdings auch das Fell um den Kopf herum sowie die Barthaare erkannt.
@@ -28,7 +28,7 @@ threshold = 0.022
 mandrill_gauss_sobel[mandrill_gauss_sobel > threshold] = 1
 mandrill_gauss_sobel[mandrill_gauss_sobel < threshold] = 0
 plt.imshow(mandrill_gauss_sobel)
-# plt.show()
+plt.show()
 
 # Das Fell um den Kopf herum wird durch das Weichzeichnen deutlich weniger erkannt, sondern nur noch stärkere Kanten.
 # Je höher Sigma gesetzt wird, desto niedriger muss der Threshold gesetzt werden,
@@ -52,23 +52,19 @@ plt.figure("Original")
 plt.plot(range(len(row_origin)), row_origin, label="Origin")
 plt.plot(row_origin_sobelv, label="SobelV")
 plt.legend()
-# plt.show()
+plt.show()
 
 plt.figure("Gauss")
 plt.plot(range(len(row_gauss)), row_gauss, label="Gauss")
 plt.plot(row_gauss_sobelv, label="SobelV")
 plt.legend()
-# plt.show()
+plt.show()
 
 plt.figure("Gauss High Sigma")
 plt.plot(range(len(row_gauss_high)), row_gauss_high, label="Gauss High Sigma")
 plt.plot(row_gauss_high_sobelv, label="SobelV")
 plt.legend()
-# plt.show()
-plt.close()
-plt.close()
-plt.close()
-plt.close()
+plt.show()
 
 # Original wird komplett geglättet (flatline), Gauss wird ebenfalls deutlich geglättet (gestauchte Kurven).
 

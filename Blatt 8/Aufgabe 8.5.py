@@ -1,4 +1,3 @@
-import math
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
@@ -73,9 +72,9 @@ result *= (1.0 / np.max(result))
 
 
 plt.imshow(result)
-# plt.show()
+plt.show()
 
-# Sieht ok aus ^^'
+# Sieht ok-ish aus ^^'
 
 
 # 4.
