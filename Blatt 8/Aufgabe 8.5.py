@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from skimage.io import imread
 from skimage.filters import sobel, sobel_h, sobel_v
 
+
 opera = imread("opera.png")
 blueness = np.zeros((opera.shape[0], opera.shape[1]))
 for x in range(blueness.shape[1]):
@@ -16,9 +17,9 @@ blueness_sobel = sobel(blueness)
 
 # 1.
 degrees = np.degrees(np.arctan(np.divide(sobel_v(blueness), sobel_h(blueness) + 0.0001)))
+degrees[np.logical_and(degrees > -67.5, degrees < -22.5)] = -45
 degrees[np.logical_and(degrees > -22.5, degrees < 22.5)] = 0
 degrees[np.logical_and(degrees > 22.5, degrees < 67.5)] = 45
-degrees[np.logical_and(degrees > -67.5, degrees < -22.5)] = -45
 degrees[np.logical_or(degrees > 67.5, degrees < -67.5)] = 90
 result = np.zeros(blueness_sobel.shape)
 
@@ -63,7 +64,6 @@ for x in range(width):
                 n2 = blueness_sobel[y+1, x]
             else:
                 n2 = 0
-
         if blueness_sobel[y, x] >= n1 and blueness_sobel[y, x] >= n2:
             result[y, x] = blueness_sobel[y, x]
         else:
@@ -76,10 +76,11 @@ plt.show()
 
 
 # 4.
-threshold = 0.15
+threshold = 0.2
 result[result > threshold] = 1
 result[result < threshold] = 0
 plt.imshow(result)
 plt.show()
 
-# Nicht ganz, es gibt Lücken in der Linie. Man könnte wohl vorher Weichzeichnen, um ein besseres Ergebnis zu erzielen.
+# Nicht ganz, es gibt Lücken in der Kante, egal welchen threshold man wählt.
+# Man könnte vorher Weichzeichnen, um ein besseres Ergebnis zu erzielen.
