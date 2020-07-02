@@ -20,10 +20,10 @@ degrees[np.logical_and(degrees > -22.5, degrees < 22.5)] = 0
 degrees[np.logical_and(degrees > 22.5, degrees < 67.5)] = 45
 degrees[np.logical_and(degrees > -67.5, degrees < -22.5)] = -45
 degrees[np.logical_or(degrees > 67.5, degrees < -67.5)] = 90
-result = np.zeros(blueness.shape)
+result = np.zeros(blueness_sobel.shape)
 
 
-# 2.+3.
+# 2. + 3.
 height, width = blueness_sobel.shape[:2]
 for x in range(width):
     for y in range(height):
@@ -64,7 +64,7 @@ for x in range(width):
             else:
                 n2 = 0
 
-        if blueness_sobel[y, x] > n1 or blueness_sobel[y, x] > n2:
+        if blueness_sobel[y, x] >= n1 and blueness_sobel[y, x] >= n2:
             result[y, x] = blueness_sobel[y, x]
         else:
             result[y, x] = 0
@@ -76,10 +76,10 @@ plt.show()
 
 
 # 4.
-threshold = 0.2
+threshold = 0.15
 result[result > threshold] = 1
 result[result < threshold] = 0
 plt.imshow(result)
 plt.show()
 
-# Nicht ganz, aber lassen wir mal gelten. (Mir fällt einfach keine Lösung ein :P)
+# Nicht ganz, es gibt Lücken in der Linie. Man könnte wohl vorher Weichzeichnen, um ein besseres Ergebnis zu erzielen.
