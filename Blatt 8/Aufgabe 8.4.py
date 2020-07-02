@@ -15,20 +15,20 @@ plt.show()
 
 # Es werden quasi alle wichtigen Konturen des Gebäudes gefunden;
 # besonders stark sind dabei die Kanten, die im Bild besonders hell sind.
+# Es werden allerdings Spiegelungen fälschlicherweise als Kanten erkannt.
 
 
 # 2.
 # Create a zero-filled image in the shape of the gray-scaled image,
 # iterate over the rgb image and calculate the Euclidian distance between the rgb pixel and a blue pixel,
-# set it in the newly created image and finally normalize the array to 0-255 range.
+# set it in the newly created image and subtract the normalized array from 255, so blue is 255 and yellow is 0.
 blueness = np.zeros(opera_gray.shape)
 for x in range(blueness.shape[1]):
     for y in range(blueness.shape[0]):
         px = opera_rgb[y, x]
         euclidian_distance = np.linalg.norm(px - np.asarray([0, 0, 255]))
         blueness[y, x] = euclidian_distance
-blueness *= (255.0 / np.max(blueness))
-
+blueness = 255 - (blueness * (255.0 / np.max(blueness))).astype(np.uint8)
 
 # 3.
 blueness_sobel = sobel(blueness)

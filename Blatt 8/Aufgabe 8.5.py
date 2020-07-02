@@ -10,7 +10,7 @@ for x in range(blueness.shape[1]):
         px = opera[y, x]
         euclidian_distance = np.linalg.norm(px - np.asarray([0, 0, 255]))
         blueness[y, x] = euclidian_distance
-blueness *= (255.0 / np.max(blueness))
+blueness = 255 - (blueness * (255.0 / np.max(blueness))).astype(np.uint8)
 blueness_sobel = sobel(blueness)
 
 
@@ -69,8 +69,6 @@ for x in range(width):
         else:
             result[y, x] = 0
 result *= (1.0 / np.max(result))
-
-
 plt.imshow(result)
 plt.show()
 
@@ -81,7 +79,6 @@ plt.show()
 threshold = 0.2
 result[result > threshold] = 1
 result[result < threshold] = 0
-
 plt.imshow(result)
 plt.show()
 

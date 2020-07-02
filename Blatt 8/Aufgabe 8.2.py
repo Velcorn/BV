@@ -76,23 +76,23 @@ degrees_origin = np.degrees(np.arctan(np.divide(sobel_v(mandrill), sobel_h(mandr
 degrees_gauss = np.degrees(np.arctan(np.divide(sobel_v(mandrill_gauss), sobel_h(mandrill_gauss) + 0.0001)))
 
 plt.figure("Histogramm Origin")
-plt.hist(degrees_origin.flatten(), 9, [-90, 90])
+plt.hist(degrees_origin.flatten(), 9, [-90, 90], density=True)
 plt.show()
 
 plt.figure("Histogramm Gauss")
-plt.hist(degrees_gauss.flatten(), 9, [-90, 90])
+plt.hist(degrees_gauss.flatten(), 9, [-90, 90], density=True)
 plt.show()
 
 # Bei dem Histogramm des Originalbildes ist die Verteilung relativ symmetrisch um die 0° gespiegelt.
 # Bei dem Histogramm des Gaussfilters ist die Verteilung bei -90°, 0° und 90° höher als beim Rest.
 
 plt.figure("Histogramm Origin Weight")
-plt.hist(degrees_origin.flatten(), 9, [-90, 90], weights=degrees_origin.flatten())
+plt.hist(degrees_origin.flatten(), 9, [-90, 90], density=True, weights=mandrill_sobel.flatten())
 plt.show()
 
 counts, bins = np.histogram(degrees_gauss, 9, [-90, 90])
 plt.figure("Histogramm Gauss Weight")
-plt.hist(degrees_gauss.flatten(), 9, [-90, 90], weights=degrees_gauss.flatten())
+plt.hist(degrees_gauss.flatten(), 9, [-90, 90], density=True, weights=mandrill_gauss_sobel.flatten())
 plt.show()
 
-# Mit gesetztem Weightparameter verdeutlicht sich die Diskrepanz an den Enden (-90° und 90°).
+# Mit gesetztem Weightparameter verdeutlichen sich die Diskrepanzen.
