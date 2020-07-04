@@ -12,20 +12,52 @@ def white_rectangle(x, y, w, h):
     return black
 
 
-rectangle = white_rectangle(128, 128, 10, 5)
+rect5x10 = white_rectangle(128, 128, 10, 5)
+'''plt.figure("Rectangle 5x10")
 plt.imshow(rectangle, cmap="gray")
-plt.show()
+plt.show()'''
 
 
 # 2.
+F = np.fft.fft2(rect5x10)
 
 
 # 3.
+'''F_shifted = np.fft.fftshift(F)
+magnitude = np.abs(F_shifted)
+phase = np.angle(F_shifted)
+plt.figure("Magnitude Rect 5x10")
+plt.imshow(magnitude, cmap="gray")
+plt.show()
+plt.figure("Phase Rect 5x10")
+plt.imshow(phase, cmap="gray")
+plt.show()
 
 
 # 4.
-reverse = white_rectangle(128, 128, 5, 10)
-rec2020 = white_rectangle(128, 128, 20, 20)
+rect10x5 = white_rectangle(128, 128, 5, 10)
+F = np.fft.fft2(rect10x5)
+F_shifted = np.fft.fftshift(F)
+magnitude = np.abs(F_shifted)
+phase = np.angle(F_shifted)
+plt.figure("Magnitude Rect 10x5")
+plt.imshow(magnitude, cmap="gray")
+plt.show()
+plt.figure("Phase Rect 10x5")
+plt.imshow(phase, cmap="gray")
+plt.show()
+
+rect20x20 = white_rectangle(128, 128, 20, 20)
+F = np.fft.fft2(rect20x20)
+F_shifted = np.fft.fftshift(F)
+magnitude = np.abs(F_shifted)
+phase = np.angle(F_shifted)
+plt.figure("Magnitude Rect 20x20")
+plt.imshow(magnitude, cmap="gray")
+plt.show()
+plt.figure("Phase Rect 20x20")
+plt.imshow(phase, cmap="gray")
+plt.show()'''
 
 
 # 5.
@@ -41,5 +73,25 @@ def white_circle(x, y, r):
 
 
 circle = white_circle(128, 128, 10)
-plt.imshow(circle, cmap="gray")
+F = np.fft.fft2(circle)
+F_shifted = np.fft.fftshift(F)
+magnitude = np.abs(F_shifted)
+phase = np.angle(F_shifted)
+plt.figure("Magnitude Circle 10")
+plt.imshow(magnitude, cmap="gray")
+plt.show()
+plt.figure("Phase Circle 10")
+plt.imshow(phase, cmap="gray")
+plt.show()
+
+circle_gauss = gaussian(circle, sigma=10)
+F = np.fft.fft2(circle_gauss)
+F_shifted = np.fft.fftshift(F)
+magnitude = np.abs(F_shifted)
+phase = np.angle(F_shifted)
+plt.figure("Magnitude Circle Gauss")
+plt.imshow(magnitude, cmap="gray")
+plt.show()
+plt.figure("Phase Circle Gauss")
+plt.imshow(phase, cmap="gray")
 plt.show()
