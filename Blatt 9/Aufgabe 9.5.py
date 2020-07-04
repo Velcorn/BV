@@ -34,7 +34,6 @@ plt.imshow(mandrill_hBars_new, cmap="gray")
 plt.show()
 
 # Die Streifen sind weg, das Bild ist insgesamt etwas heller und etwas unschärfer geworden.
-# Sieht etwas wie ein Gaussfilter aus?!
 
 
 # 2.
@@ -54,7 +53,7 @@ plt.figure("Weights Result")
 plt.imshow(mandrill_hBars_new, cmap="gray")
 plt.show()
 
-# Again Gauss-Filter?!
+# Die Streifen sind weg, aber das Bild ist helleer und deutlich unschärfer.
 
 
 # 3.
@@ -68,3 +67,5 @@ mandrill_hBars_new = np.real(np.fft.ifft2(F_new))
 plt.figure("Square Result")
 plt.imshow(mandrill_hBars_new, cmap="gray")
 plt.show()
+
+# Das Ergebnis sieht quasi aus wie der normale Mandrill ohne Streifen.
