@@ -13,17 +13,20 @@ def white_rectangle(x, y, w, h):
 
 
 rect5x10 = white_rectangle(128, 128, 10, 5)
-'''plt.figure("Rectangle 5x10")
-plt.imshow(rectangle, cmap="gray")
-plt.show()'''
+plt.figure("Rectangle 5x10")
+plt.imshow(rect5x10, cmap="gray")
+plt.show()
 
 
 # 2.
 F = np.fft.fft2(rect5x10)
+print("Fourier-Transformierte F(0,0):", F[0, 0])
+
+# 50 ist der reelle, 0j der imaginäre Teil.
 
 
 # 3.
-'''F_shifted = np.fft.fftshift(F)
+F_shifted = np.fft.fftshift(F)
 magnitude = np.abs(F_shifted)
 phase = np.angle(F_shifted)
 plt.figure("Magnitude Rect 5x10")
@@ -32,6 +35,9 @@ plt.show()
 plt.figure("Phase Rect 5x10")
 plt.imshow(phase, cmap="gray")
 plt.show()
+
+
+#
 
 
 # 4.
@@ -57,18 +63,20 @@ plt.imshow(magnitude, cmap="gray")
 plt.show()
 plt.figure("Phase Rect 20x20")
 plt.imshow(phase, cmap="gray")
-plt.show()'''
+plt.show()
+
+#
 
 
 # 5.
-def white_circle(x, y, r):
+def white_circle(cx, cy, r):
     black = np.zeros((256, 256))
-    # Create mgrid of radius.
-    xx, yy = np.mgrid[-r:r, -r:r]
-    # Use circle forumale to calculate index.
-    i = xx ** 2 + yy ** 2 <= r ** 2
-    # Make white circle with given radius around given center.
-    black[y-r:y+r, x-r:x+r][i] = 1
+    # Create mgrid.
+    x, y = np.mgrid[:256, :256]
+    # Make a circle mask.
+    mask = np.sqrt((x - cx) ** 2 + (y - cy) ** 2) <= r
+    # Apply mask to img.
+    black[mask] = 1
     return black
 
 
@@ -95,3 +103,5 @@ plt.show()
 plt.figure("Phase Circle Gauss")
 plt.imshow(phase, cmap="gray")
 plt.show()
+
+#
