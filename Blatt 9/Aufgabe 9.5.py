@@ -53,7 +53,7 @@ plt.figure("Weights Result")
 plt.imshow(mandrill_hBars_new, cmap="gray")
 plt.show()
 
-# Die Streifen sind weg, aber das Bild ist helleer und deutlich unschärfer.
+# Die Streifen sind weg, aber das Bild ist heller und deutlich unschärfer.
 
 
 # 3.
