@@ -22,7 +22,7 @@ print("\n")
 
 m = np.multiply(m, 1.2)
 print(m)
-print("Data type is: " + str(m.dtype))
+print(f"Data type is: {m.dtype}")
 print("\n")
 
 m = np.multiply(m, m)

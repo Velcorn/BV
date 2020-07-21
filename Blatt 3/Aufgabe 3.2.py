@@ -2,12 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import ImageCollection, imsave
 
+
 # 1.
 # Load images and calculate an average.
 imgs = ImageCollection("bild*.png")
 imgs_avg = sum(imgs)/len(imgs)
 plt.imshow(imgs_avg, cmap="gray")
-# plt.show()
+plt.show()
+
 # Nein, 5 Bilder sind definitiv zu wenig.
 
 
@@ -16,7 +18,7 @@ plt.imshow(imgs_avg, cmap="gray")
 imgs_stack = np.stack(imgs, axis=0)
 imgs_median = np.median(imgs_stack, axis=0)
 plt.imshow(imgs_median, cmap="gray")
-# plt.show()
+plt.show()
 
 
 # 3.
@@ -35,5 +37,5 @@ for i in range(len(imgs_diff)):
 
 # 5.
 plt.imshow(comb_img, cmap="gray")
-# plt.show()
+plt.show()
 imsave("comb_img.png", comb_img.astype(np.uint8))

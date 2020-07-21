@@ -9,23 +9,23 @@ minimum = np.amin(mandrill)
 maximum = np.amax(mandrill)
 average = np.average(mandrill)
 deviation = np.std(mandrill)
-print("Minimum:", minimum)
-print("Maximum:", maximum)
-print("Average:", average)
-print("Deviation:", deviation)
+print(f"Minimum: {minimum}")
+print(f"Maximum: {maximum}")
+print(f"Average: {average}")
+print(f"Deviation: {deviation}")
 
 # 3.
 minxy = np.unravel_index(np.argmin(mandrill, axis=None), mandrill.shape)
 maxxy = np.unravel_index(np.argmax(mandrill, axis=None), mandrill.shape)
-print("Minimum xy:", minxy)
-print("Maximum xy:", maxxy)
+print(f"Minimum xy: {minxy}")
+print(f"Maximum xy: {maxxy}")
 
 # 4.
 even_count = np.count_nonzero(mandrill % 2 == 0)
 odd_count = np.count_nonzero(mandrill % 2 != 0)
-print("Even:", even_count)
-print("Odd:", odd_count)
+print(f"Even: {even_count}")
+print(f"Odd: {odd_count}")
 
 # 5.
 coordinates = np.argwhere(mandrill % 2 == 0)
-print("Even coordinates:", coordinates)
+print(f"Even coordinates: {coordinates}")

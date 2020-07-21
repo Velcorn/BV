@@ -56,4 +56,5 @@ def scale(mode, img, factor):
 # 2.
 plt.imshow(scale(2, tv, 2), cmap="gray")
 plt.show()
+
 # Bilineare Interpolation liefert deutlich sanftere Übergänge zwischen den Graustufen.

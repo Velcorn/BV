@@ -13,7 +13,7 @@ error = wo_error - w_error
 # 2.
 binary = 1 * (error > 0)
 plt.imshow(binary, cmap="gray")
-# plt.show()
+plt.show()
 
 
 # 3.
@@ -55,7 +55,7 @@ def count_errors(count, coords, visited):
     # If all coordinates are investigated, return the count. Else recursively call the function.
     if coords:
         return count_errors(count, coords, visited)
-    return "There are " + str(count) + " errors in the image!"
+    return f"There are {count} errors in the image!"
 
 
 # c.

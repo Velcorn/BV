@@ -22,13 +22,16 @@ def scale(img, factor):
 plt.imshow(scale(tv, 2), cmap="gray")
 plt.show()
 
+
 # 3.
 # Sieht nicht danach aus. Vorausgesetzt die Funktion ist richtig implementiert ^^
+
 
 # 4.
 half_size = scale(tv, 0.5)
 original_size = scale(half_size, 2)
 plt.imshow(original_size, cmap="gray")
 plt.show()
+
 # Nein, da beim Verkleinern Informationen verloren gehen,
 # die beim Vergrößern nicht zurückgewonnen werden (können).

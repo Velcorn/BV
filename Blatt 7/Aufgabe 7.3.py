@@ -19,7 +19,7 @@ def mean_abs_diff(img1, img2):
 
 
 diff_gauss = mean_abs_diff(einstein, einstein_gauss)
-print("Mean abs diff original/gauss:", diff_gauss)
+print(f"Mean abs diff original/gauss: {diff_gauss}")
 
 
 # 3.
@@ -34,7 +34,7 @@ for n in n_vals:
         min_diff = diff
         best = einstein_gauss_box
 
-print("Min mean abs diff original/gauss/box:", min_diff)
+print(f"Min mean abs diff original/gauss/box: {min_diff}")
 plt.imshow(best, cmap="gray")
 plt.show()
 
@@ -50,7 +50,7 @@ while var < 2:
         best = einstein_gauss_gauss
     var += 0.1
 
-print("Min mean abs diff original/gauss/gauss:", min_diff)
+print(f"Min mean abs diff original/gauss/gauss: {min_diff}")
 plt.imshow(best, cmap="gray")
 plt.show()
 
@@ -70,7 +70,7 @@ while var < 2:
         best = einstein_snp_gauss
     var += 0.1
 
-print("Min mean abs diff original/snp/gauss:", min_diff)
+print(f"Min mean abs diff original/snp/gauss: {min_diff}")
 plt.imshow(best, cmap="gray")
 plt.show()
 
@@ -90,6 +90,6 @@ def median_filter(img):
 
 einstein_snp_median = median_filter(einstein_snp)
 diff_snp_median = mean_abs_diff(einstein, einstein_snp_median)
-print("Mean abs diff original/snp/median:", diff_snp_median)
+print(f"Mean abs diff original/snp/median: {diff_snp_median}")
 plt.imshow(einstein_snp_median, cmap="gray")
 plt.show()

@@ -10,7 +10,9 @@ gamma = 1.5
 img1 = np.power(imgs[0], gamma)
 plt.imshow(img1, cmap="gray", vmin=0, vmax=255)
 plt.show()
+
 # Es sind 8 Poller (den halbwegs verdeckten mitgezählt)
+
 
 # 2.
 # Contrast stretching: Differenzierung der Farben.
@@ -19,6 +21,7 @@ maximum = np.max(imgs[1])
 img2 = np.round((imgs[1] - minimum) / (maximum - minimum) * 255)
 plt.imshow(img2, cmap="gray")
 plt.show()
+
 
 # 3.
 # Intensity-level slicing: Hervorheben eines Farbbereichs.

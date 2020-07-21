@@ -25,7 +25,7 @@ def var1(img):
     return var
 
 
-print("Var1 result:", var1(mandrill))
+print(f"Var1 result: {var1(mandrill)}")
 
 
 # 2.
@@ -45,7 +45,7 @@ def var2(img):
     return var
 
 
-print("Var2 result:", var2(mandrill))
+print(f"Var2 result: {var2(mandrill)}")
 
 # 3.
 start = time.time()
@@ -53,14 +53,14 @@ for i in range(10):
     var1(mandrill)
 end = time.time()
 var1_time = end - start
-print("Var1 time:", var1_time)
+print(f"Var1 time: {var1_time}")
 
 start = time.time()
 for i in range(10):
     var2(mandrill)
 end = time.time()
 var2_time = end - start
-print("Var2 time:", var2_time)
+print(f"Var2 time: {var2_time}")
 
 # Die Ergebnisse variieren leicht aufgrund von Rundungen bei unterschiedlichen Rechnungen.
 # Variante 2 sollte schneller sein, da nur 1 Durchlauf benötigt wird.

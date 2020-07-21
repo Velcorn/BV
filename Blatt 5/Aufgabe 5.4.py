@@ -10,7 +10,7 @@ plt.show()
 
 
 # 2.
-mandrill_inverted = np.subtract(255, mandrill)
+mandrill_inverted = 255 - mandrill
 plt.imshow(mandrill_inverted)
 plt.show()
 
@@ -58,6 +58,7 @@ plt.imshow(hsv2rgb(mandrill_sat1))
 plt.show()
 plt.imshow(hsv2rgb(mandrill_sat0))
 plt.show()
+
 # Bei einer erhöhten Sättigung wirken die Farben intensiver,
 # bei einer erniedrigten Sättigung wirken die Farben blasser oder gar grau (0)
 
@@ -75,4 +76,5 @@ plt.imshow(hsv2rgb(mandrill_120))
 plt.show()
 plt.imshow(hsv2rgb(mandrill_240))
 plt.show()
+
 # Drehen der Farbtöne verändert die Farbtöne des Bildes im HSI-Farbkreis?!

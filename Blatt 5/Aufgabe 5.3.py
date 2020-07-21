@@ -7,16 +7,24 @@ mandrill = imread("mandrillFarbe.png")
 
 
 def rgb2cmy(img):
-    return np.subtract(1, np.divide(img, 255))
+    return 1 - img / 255
+
+
+plt.imshow(rgb2cmy(mandrill))
+plt.show()
 
 
 def cmy2rgb(img):
-    return np.multiply(np.subtract(1, img), 255).astype(int)
+    return ((1 - img) * 255).astype(int)
+
+
+plt.imshow(cmy2rgb(rgb2cmy(mandrill)))
+plt.show()
 
 
 def rgb2hsi(img):
     # Normalize RGB values.
-    img = np.divide(img, 255)
+    img = img / 255
 
     # Calculate HSI values for each pixel based on the formulas.
     for x in range(img.shape[1]-1):
@@ -35,6 +43,11 @@ def rgb2hsi(img):
             img[y, x] = h, s, i
 
     return img
+
+
+print(rgb2hsi(mandrill))
+plt.imshow(rgb2hsi(mandrill))
+plt.show()
 
 
 def hsi2rgb(img):
@@ -66,18 +79,5 @@ def hsi2rgb(img):
     return img
 
 
-# RGB to CMY
-plt.imshow(rgb2cmy(mandrill))
-plt.show()
-
-# CMY to RGB
-plt.imshow(cmy2rgb(rgb2cmy(mandrill)))
-plt.show()
-
-# RGB to HSI
-plt.imshow(rgb2hsi(mandrill))
-plt.show()
-
-# HSI to RGB
 plt.imshow(hsi2rgb(rgb2hsi(mandrill)))
 plt.show()

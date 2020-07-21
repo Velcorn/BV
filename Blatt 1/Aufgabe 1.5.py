@@ -31,6 +31,6 @@ def broadcasting(image):
 # 3.
 for_loops_time = for_loops(mandrill) * 100
 broadcasting_time = broadcasting(mandrill) * 100
-print("100 calls with for loops:", for_loops_time)
-print("100 calls with broadcasting:", broadcasting_time)
-print("Broadcasting is", round(for_loops_time / broadcasting_time), "times faster.")
+print(f"100 calls with for loops: {for_loops_time}")
+print(f"100 calls with broadcasting: {broadcasting_time}")
+print(f"Broadcasting is {round(for_loops_time / broadcasting_time)} times faster.")
