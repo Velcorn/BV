@@ -24,28 +24,28 @@ def scrabble(string):
 
 def list_info():
     l1 = []
-    while len(l1) < 5:
-        user_input = input('Enter a number: ')
+    user_input = input("Enter 5 numbers seperated by commas: ")
+    for n in user_input.strip().split(","):
         try:
-            float(user_input)
-            l1.append(user_input)
+            float(n)
+            l1.append(float(n))
         except ValueError:
-            print("Not a number!")
+            print("Incorrect format")
 
     print(l1)
-    print("Min: " + min(l1))
-    print("Max: " + max(l1))
-    print("Median: " + sorted(l1)[int(len(l1) / 2)])
-    print("Different: " + str(len(set(l1))))
+    print(f"Min: {min(l1)}")
+    print(f"Max: {max(l1)}")
+    print(f"Median: {sorted(l1)[int(len(l1) / 2)]}")
+    print(f"Different: {str(len(set(l1)))}")
 
     z = 0
     for i in l1:
-        if float(i).is_integer():
+        if i.is_integer():
             z += 1
-    print("Z: " + str(z))
-    return "R w/o Z: " + str(len(l1) - z)
+    print(f"Z: {z}")
+    return f"R w/o Z: {len(l1) - z}"
 
 
-# print(rotate(2))
-# print(scrabble("informatikum"))
+print(rotate(2))
+print(scrabble("informatikum"))
 print(list_info())
